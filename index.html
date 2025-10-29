@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khethiwe Sibeko - Copywriting & Graphic Design</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #ffffff;
+        color: #1a1a1a;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: #333;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #667eea;
+      }
+
+      .nav-cta {
+        padding: 0.75rem 1.75rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white !important;
+        border-radius: 50px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      /* Page Content */
+      .page {
+        display: none;
+        min-height: 100vh;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 150px 5% 100px;
+        background: linear-gradient(
+          135deg,
+          #f5f3ff 0%,
+          #fef3f9 50%,
+          #ffffff 100%
+        );
+      }
+
+      .hero-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero-content {
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: white;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        color: #1a1a1a;
+      }
+
+      .hero h1 .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: white;
+        color: #333;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        border: 2px solid #e5e7eb;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        border-color: #667eea;
+        color: #667eea;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .social-icon {
+        width: 48px;
+        height: 48px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .social-icon:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .hero-image {
+        position: relative;
+        animation: fadeInRight 1s ease-out;
+      }
+
+      .hero-image::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 30px;
+        filter: blur(40px);
+        opacity: 0.2;
+        z-index: -1;
+      }
+
+      .hero-image img {
+        width: 100%;
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 100px 5%;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .skill-card {
+        background: white;
+        border: 2px solid #f3f4f6;
+        padding: 2.5rem;
+        border-radius: 20px;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        border-color: #e9d5ff;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+      }
+
+      .skill-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s;
+      }
+
+      .skill-card:hover .skill-icon {
+        transform: scale(1.1);
+      }
+
+      .skill-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      .skill-card p {
+        color: #666;
+        line-height: 1.7;
+      }
+
+      /* Portfolio Grid */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .portfolio-item {
+        background: white;
+        border: 2px solid #f3f4f6;
+        border-radius: 20px;
+        padding: 2.5rem;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+        border-color: #e9d5ff;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+      }
+
+      .portfolio-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-metric {
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+      }
+
+      .metric-emerald {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      }
+
+      .metric-blue {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      }
+
+      .metric-purple {
+        background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      }
+
+      .metric-orange {
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      }
+
+      .portfolio-item h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1a1a1a;
+      }
+
+      .portfolio-item p {
+        color: #666;
+        line-height: 1.7;
+      }
+
+      /* Services */
+      .services-box {
+        max-width: 700px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #faf5ff 0%, #fef3f9 100%);
+        border-radius: 30px;
+        padding: 3rem;
+        border: 2px solid #e9d5ff;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.1);
+      }
+
+      .services-list {
+        list-style: none;
+      }
+
+      .services-list li {
+        padding: 1.25rem 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .services-list li:not(:last-child) {
+        border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+      }
+
+      .check-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      /* Testimonial */
+      .testimonial {
+        max-width: 900px;
+        margin: 4rem auto;
+        background: white;
+        border: 2px solid #f3f4f6;
+        border-radius: 30px;
+        padding: 3.5rem;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      .quote-mark {
+        font-size: 6rem;
+        color: #e9d5ff;
+        position: absolute;
+        top: 1rem;
+        left: 2rem;
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+
+      .testimonial-text {
+        font-size: 1.35rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        color: #333;
+        position: relative;
+        z-index: 1;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .author-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+
+      .author-info h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
+        color: #1a1a1a;
+      }
+
+      .author-info p {
+        color: #666;
+      }
+
+      /* Contact Form */
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 3rem;
+        border-radius: 30px;
+        color: white;
+      }
+
+      .contact-info h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-info p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-detail-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .contact-form-container {
+        background: white;
+        padding: 3rem;
+        border-radius: 30px;
+        border: 2px solid #f3f4f6;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-form-container h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+      }
+
+      .contact-form-container .subtitle {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+      }
+
+      /* Portfolio Page */
+      .portfolio-showcase {
+        padding: 80px 5%;
+        background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+      }
+
+      .portfolio-detail {
+        max-width: 1200px;
+        margin: 0 auto 4rem;
+        background: white;
+        border: 2px solid #f3f4f6;
+        border-radius: 30px;
+        padding: 3rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .portfolio-detail h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      .portfolio-detail p {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .portfolio-cta-section {
+        max-width: 900px;
+        margin: 4rem auto;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 3rem;
+        border-radius: 30px;
+        text-align: center;
+        color: white;
+      }
+
+      .portfolio-cta-section h3 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .portfolio-cta-section .btn-primary {
+        background: white;
+        color: #667eea;
+      }
+
+      .portfolio-cta-section .btn-primary:hover {
+        transform: translateY(-3px);
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 4rem 5%;
+        text-align: center;
+      }
+
+      .footer-logo {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 1rem;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .footer-text {
+        color: #999;
+        margin-bottom: 2rem;
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-social a {
+        width: 48px;
+        height: 48px;
+        background: #2a2a2a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .footer-social a:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 968px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-container,
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .hero-content {
+          order: 2;
+        }
+
+        .hero-image {
+          order: 1;
+        }
+
+        .hero {
+          padding: 120px 5% 80px;
+        }
+
+        .section {
+          padding: 60px 5%;
+        }
+
+        .skills-grid,
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="logo-container">
+        <div class="logo">KS</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li>
+        <li>
+          <a href="#" onclick="showPage('contact')" class="nav-cta"
+            >Get in Touch</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+      <section class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              Available for Projects
+            </div>
+            <h1>
+              Modern Digital Services to
+              <span class="gradient-text">Grow Your Business</span>
+            </h1>
+            <p>
+              I use modern digital tools to help businesses grow, reach more
+              people, and achieve better results through strategic copywriting,
+              design, and digital marketing.
+            </p>
+            <div class="cta-buttons">
+              <a href="#" onclick="showPage('portfolio')" class="btn-primary">
+                View My Work
+                <span>→</span>
+              </a>
+              <a href="#" onclick="showPage('contact')" class="btn-secondary">
+                <span>✉</span>
+                Contact Me
+              </a>
+            </div>
+            <div class="social-links">
+              <div class="social-icon">💼</div>
+              <div class="social-icon">🐦</div>
+              <div class="social-icon">✉️</div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="image.jpeg" alt="Khethiwe Sibeko" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Skills That Set Me Apart</h2>
+          <p>
+            Unique digital skills that make a real difference and help your
+            business stand out and grow faster.
+          </p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">✍️</div>
+            <h3>Copywriting</h3>
+            <p>
+              Clear, engaging, and persuasive copy that connects with your
+              audience and drives action for websites, ads, and social media.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3>Graphic Design</h3>
+            <p>
+              Eye-catching visuals that align with your brand using Canva and
+              Adobe Express for professional graphics.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎯</div>
+            <h3>Digital Strategy</h3>
+            <p>
+              Smart digital strategies and targeted campaigns to reach the right
+              people and boost engagement.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3>Social Media</h3>
+            <p>
+              Manage and grow your social media with engaging content and
+              performance tracking.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">⚡</div>
+            <h3>Project Management</h3>
+            <p>
+              Plan and manage projects from start to finish with smooth
+              execution and timely delivery.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📝</div>
+            <h3>Content Writing</h3>
+            <p>
+              Clear, valuable content that informs and inspires your brand
+              through blogs and articles.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        style="background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%)"
+      >
+        <div class="section-header">
+          <h2>Featured Work</h2>
+          <p>Real projects delivering real results for clients and brands.</p>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <div class="portfolio-header">
+              <h3>iHub Africa 2026</h3>
+              <div class="portfolio-metric metric-emerald">↑ 25%</div>
+            </div>
+            <p>
+              Campaign boosted engagement by 25% through strategic content and
+              targeted outreach.
+            </p>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-header">
+              <h3>Lead Generation</h3>
+              <div class="portfolio-metric metric-blue">40+</div>
+            </div>
+            <p>
+              Generated 40+ new leads with optimized landing pages and
+              compelling copy.
+            </p>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-header">
+              <h3>Journey Blog</h3>
+              <div class="portfolio-metric metric-purple">Featured</div>
+            </div>
+            <p>
+              Authentic storytelling documenting the entrepreneurial journey at
+              iHub Africa.
+            </p>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-header">
+              <h3>Blurb Blog</h3>
+              <div class="portfolio-metric metric-orange">Live</div>
+            </div>
+            <p>
+              Engaging content that resonates with readers and drives meaningful
+              traffic.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Writing & Designing</h2>
+          <p>What I create for you</p>
+        </div>
+        <div class="services-box">
+          <ul class="services-list">
+            <li>
+              <div class="check-icon">✓</div>
+              Blog articles
+            </li>
+            <li>
+              <div class="check-icon">✓</div>
+              Social Media posters
+            </li>
+            <li>
+              <div class="check-icon">✓</div>
+              Exclusive access to design insights
+            </li>
+          </ul>
+        </div>
+        <div class="testimonial">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">
+            Honestly, Khethiwe is one of the most reliable and thoughtful
+            collaborators I've met. Her passion is contagious, and she's always
+            generous with her knowledge. She doesn't just meet expectations, she
+            redefines them.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">NN</div>
+            <div class="author-info">
+              <h4>Noxolo Nkosi</h4>
+              <p>Digital Marketing Strategist</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PORTFOLIO PAGE -->
+    <div id="portfolio" class="page">
+      <section class="hero" style="padding: 150px 5% 80px">
+        <div class="section-header">
+          <h1>Portfolio</h1>
+          <p>
+            This portfolio showcases my work in copywriting, graphic design, and
+            social media management. It highlights my ability to craft engaging
+            content, create eye-catching visuals, and manage digital campaigns
+            that drive results. Each project reflects a strong focus on brand
+            identity, audience engagement, and creative strategy.
+          </p>
+        </div>
+      </section>
+
+      <section class="portfolio-showcase">
+        <div class="portfolio-detail">
+          <h3>Art Gallery — Overview</h3>
+          <p>
+            <strong>Content Strategy:</strong> A content calendar is a planning
+            tool that helps you organize, schedule, and manage your content
+            across different platforms. It outlines what content will be posted,
+            when, and where, ensuring consistency, saving time, and keeping your
+            marketing efforts on track.
+          </p>
+          <p>
+            The revitalized art gallery is set to redefine cultural landscape
+            through strategic content planning and audience engagement.
+          </p>
+        </div>
+
+        <div class="portfolio-detail">
+          <h3>1. Graphic Design</h3>
+          <p>
+            Graphic design is the art of creating visual content to communicate
+            messages. Using elements like images, typography, and color,
+            designers craft visuals for branding, marketing, social media,
+            websites, and more to capture attention and tell a story.
+          </p>
+        </div>
+
+        <div class="portfolio-detail">
+          <h3>2. Social Media Manager</h3>
+          <p>
+            A Social Media Manager is responsible for planning, creating, and
+            managing content across social media platforms. They help build
+            brand awareness, engage with audiences, and grow an online presence
+            through strategic posting, community management, and performance
+            tracking.
+          </p>
+        </div>
+
+        <div class="portfolio-cta-section">
+          <h3>Interested in working with us?</h3>
+          <p>
+            We're always looking to connect with passionate individuals and
+            forward-thinking partners who share our vision. Whether you're a
+            creative professional, a collaborator, or an organisation looking to
+            make an impact, we'd love to explore how we can work together.
+          </p>
+          <p style="margin-bottom: 2rem">
+            Let's build something great. Reach out and let's start the
+            conversation!
+          </p>
+          <a href="#" onclick="showPage('contact')" class="btn-primary"
+            >Get in Touch →</a
+          >
+        </div>
+      </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+      <section class="hero" style="padding: 150px 5% 80px">
+        <div class="section-header">
+          <h1>Get in Touch</h1>
+          <p>
+            Let's work together to bring your digital vision to life. Whether
+            you need copywriting, design, or a complete digital strategy, I'm
+            here to help.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>
+              I'm always excited to collaborate on new projects and help
+              businesses grow through strategic digital solutions. Reach out and
+              let's start a conversation about how we can work together.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-detail-item">
+                <div class="contact-icon">📧</div>
+                <div>
+                  <h4>Email</h4>
+                  <p>khethiwe.sibeko@yahoo.com</p>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <div class="contact-icon">📱</div>
+                <div>
+                  <h4>Phone</h4>
+                  <p>+27 79 377 3449</p>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <h4>Location</h4>
+                  <p>South Africa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-container">
+            <h3>Send a Message</h3>
+            <p class="subtitle">
+              Fill out the form below and I'll get back to you as soon as
+              possible.
+            </p>
+
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  placeholder="What's this about?"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="Tell me about your project..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer-logo">KS</div>
+      <p class="footer-text">Let's work together to grow your business</p>
+      <div class="footer-social">
+        <a href="#">💼</a>
+        <a href="#">🐦</a>
+        <a href="#">✉️</a>
+      </div>
+      <p class="copyright">&copy; 2025 Khethiwe Sibeko. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function showPage(pageName) {
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => {
+          page.classList.remove("active");
+        });
+        document.getElementById(pageName).classList.add("active");
+        window.scrollTo(0, 0);
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert("Thank you for your message! I will get back to you soon.");
+        document.getElementById("contactForm").reset();
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+        });
+      });
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = "fadeInUp 0.8s ease-out forwards";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".skill-card, .portfolio-item, .portfolio-detail")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>
