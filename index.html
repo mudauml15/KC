@@ -818,7 +818,7 @@
   <body>
     <nav class="nav">
       <div class="logo-container">
-        <div class="logo">KS</div>
+        <a href="#" onclick="showPage('home')"><div class="logo">KS</div></a>
       </div>
       <ul class="nav-links">
         <li><a href="#" onclick="showPage('home')">Home</a></li>
@@ -1201,12 +1201,14 @@
     </div>
 
     <footer>
-      <div class="footer-logo">KS</div>
+      <a href="#" onclick="showPage('home')"
+        ><div class="footer-logo">KS</div></a
+      >
       <p class="footer-text">Let's work together to grow your business</p>
       <div class="footer-social">
-        <a href="#">💼</a>
-        <a href="#">🐦</a>
-        <a href="#">✉️</a>
+        <a href="#" onclick="showPage('portfolio')" class="nav-cta">💼</a>
+        <a href="#" onclick="showPage('contact')" class="nav-cta">🐦</a>
+        <a href="#" onclick="showPage('contact')" class="nav-cta">✉️</a>
       </div>
       <p class="copyright">&copy; 2025 Khethiwe Sibeko. All rights reserved.</p>
     </footer>
